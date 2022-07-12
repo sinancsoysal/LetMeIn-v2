@@ -8,10 +8,10 @@ services:
       - .:/app
     ports:
       - "8969:8000"
-    depends_on:
-      - db
     links:
       - db:db
+    depends_on:
+      - db
 
   db:
     image: postgres:latest
