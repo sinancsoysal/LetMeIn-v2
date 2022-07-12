@@ -12,8 +12,9 @@ services:
       - db
 
   db:
-    image: postgres
+    image: postgres:latest
     restart: always
+    hostname: localhost
     volumes:
       - ./data/db:/var/lib/postgresql/data
     ports:
