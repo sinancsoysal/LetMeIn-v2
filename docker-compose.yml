@@ -8,8 +8,6 @@ services:
       - .:/app
     ports:
       - "8969:8000"
-    links:
-      - db:db
     depends_on:
       - db
 
