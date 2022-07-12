@@ -8,6 +8,6 @@ class Verification(models.Model):
 
 
 class ShortenedId(models.Model):
-    verificationId = models.ForeignKey(Verification, on_delete=models.SET_DEFAULT)
+    verificationId = models.ForeignKey(Verification, on_delete=models.CASCADE)
     shortened = models.CharField(max_length=6)
     used = models.IntegerField(default=0)
