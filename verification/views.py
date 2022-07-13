@@ -19,7 +19,7 @@ class VerificationViewSet(viewsets.ViewSet):
 
         verification_entry = serializer.save()
 
-        return Response(verification_entry.data, status=status.HTTP_201_CREATED)
+        return Response(verification_entry.id, status=status.HTTP_201_CREATED)
 
     def retrieve(self, request, pk=None):
         verification_entry = Verification.objects.get(id=pk)
