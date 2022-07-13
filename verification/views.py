@@ -17,7 +17,6 @@ class VerificationViewSet(viewsets.ViewSet):
         if not serializer.is_valid():
             return Response(request.data, status=status.HTTP_400_BAD_REQUEST)
 
-        serializer.data.uploadStatus = "AUTHORIZED"
         verification_entry = serializer.save()
 
         return Response(verification_entry.data, status=status.HTTP_201_CREATED)
