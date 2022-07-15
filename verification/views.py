@@ -28,7 +28,7 @@ class VerificationViewSet(viewsets.ViewSet):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def update(self, request):
-        verification_entry = Verification.objects.get(id=request.data.id)
+        verification_entry = Verification.objects.get(id=request.data['id'])
         serializer = VerificationSerializer(instance=verification_entry, data=request.data)
 
         if not serializer.is_valid():
@@ -39,7 +39,7 @@ class VerificationViewSet(viewsets.ViewSet):
         return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
 
     def destroy(self, request):
-        verification_entry = Verification.objects.get(id=request.data.id)
+        verification_entry = Verification.objects.get(id=request.data['id'])
 
         verification_entry.delete()
 
