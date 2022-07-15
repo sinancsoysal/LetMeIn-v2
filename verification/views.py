@@ -6,7 +6,7 @@ from random import randint
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 
-from .models import Verification, ShortenedId
+from .models import Verification
 from .serializers import VerificationSerializer, ShortenedIdSerializer
 
 
@@ -19,16 +19,16 @@ class VerificationViewSet(viewsets.ViewSet):
 
         verification_entry = serializer.save()
 
-        return Response(verification_entry.id, status=status.HTTP_201_CREATED)
+        return Response(verification_entry, status=status.HTTP_201_CREATED)
 
-    def retrieve(self, request, pk=None):
-        verification_entry = Verification.objects.get(id=pk)
+    def retrieve(self, request):
+        verification_entry = Verification.objects.get(id=request.data.id)
         serializer = VerificationSerializer(verification_entry)
 
         return Response(serializer.data, status=status.HTTP_200_OK)
 
-    def update(self, request, pk=None):
-        verification_entry = Verification.objects.get(id=pk)
+    def update(self, request):
+        verification_entry = Verification.objects.get(id=request.data.id)
         serializer = VerificationSerializer(instance=verification_entry, data=request.data)
 
         if not serializer.is_valid():
@@ -38,8 +38,8 @@ class VerificationViewSet(viewsets.ViewSet):
 
         return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
 
-    def destroy(self, request, pk=None):
-        verification_entry = Verification.objects.get(id=pk)
+    def destroy(self, request):
+        verification_entry = Verification.objects.get(id=request.data.id)
 
         verification_entry.delete()
 
