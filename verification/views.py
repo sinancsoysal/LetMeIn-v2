@@ -7,7 +7,7 @@ from rest_framework import viewsets, status
 from rest_framework.response import Response
 
 from .models import Verification
-from .serializers import VerificationSerializer, ShortenedIdSerializer
+from .serializers import VerificationSerializer
 
 
 class VerificationViewSet(viewsets.ViewSet):
