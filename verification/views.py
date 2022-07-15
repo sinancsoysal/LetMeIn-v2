@@ -22,7 +22,7 @@ class VerificationViewSet(viewsets.ViewSet):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     def retrieve(self, request):
-        verification_entry = Verification.objects.get(id=request.data.id)
+        verification_entry = Verification.objects.get(id=request.data['id'])
         serializer = VerificationSerializer(verification_entry)
 
         return Response(serializer.data, status=status.HTTP_200_OK)
