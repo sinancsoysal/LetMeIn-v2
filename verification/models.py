@@ -3,7 +3,7 @@ from django.db import models
 
 class Verification(models.Model):
     data = models.CharField(max_length=255)
-    uploadStatus = models.CharField(max_length=10)
+    uploadStatus = models.CharField(max_length=10, default="AUTHORIZED")
     completed = models.BooleanField(default=False)
 
 
